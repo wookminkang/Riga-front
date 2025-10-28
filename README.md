@@ -1,7 +1,5 @@
 # Riga-front (React + TypeScript Project)
 
-# ⚛️ React + TypeScript Project
-
 ---
 
 ## 🧩 Tech Stack
