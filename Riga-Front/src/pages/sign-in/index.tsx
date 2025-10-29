@@ -15,9 +15,9 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { useNavigate } from "react-router"
 
-/* 아이콘 */
-import { LogIn } from "lucide-react"
+import { Github } from "lucide-react"
 
 /* 아이디 폼 스키마 */
 const idFormSchema = z.object({
@@ -34,6 +34,7 @@ const idFormSchema = z.object({
 })
 
 function SignIn() {
+  const navigate = useNavigate()
   const signInForm = useForm<z.infer<typeof idFormSchema>>({
     resolver: zodResolver(idFormSchema),
     defaultValues: {
@@ -62,6 +63,9 @@ function SignIn() {
         <div className="flex flex-col gap-6"></div>
         <div className="w-full max-w-sm md:max-w-4xl">
           <Card className="px-6 py-12">
+            <div className="text-xl font-bold text-center mb-6 flex flex-col items-center gap-3">
+              환영합니다.
+            </div>
             <Form {...signInForm}>
               <form
                 onSubmit={signInForm.handleSubmit(onSubmit)}
@@ -110,7 +114,10 @@ function SignIn() {
 
                 <div className="text-center text-sm text-muted-foreground mt-5">
                   계정이 없으신가요?{" "}
-                  <span className="text-primary cursor-pointer text-underline">
+                  <span
+                    className="text-primary cursor-pointer text-underline hover:underline"
+                    onClick={() => navigate("/sign-up")}
+                  >
                     회원가입
                   </span>
                 </div>
